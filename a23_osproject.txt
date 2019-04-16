@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<stdbool.h>
+struct method
+{
+	int i,j,n,cnt,tq,cut_off;
+	int a[1000],b[1000],pr[1000],com[1000],tat[1000],wat[1000],rem_bt[1000];
+	char yess;
+}p;
+void getdata()
+{
+	printf("__________________________________WELCOME TO PREEMTIVE PRIORITY SCHEDULING ALGORITHM__________________________________*\n\n\n");
+	printf("Enter the number of methodes you want : ");
+	scanf("%d",&p.n);
+	
+	for(p.i=1;p.i<=p.n;p.i++){
+	printf("Enter the Burst Time for method %d : ",p.i);
+	scanf("%d",&p.b[p.i]);
+	}
+	
+	for(p.i=1;p.i<=p.n;p.i++){
+	printf("Enter the Arrival Time for method %d : ",p.i);
+	scanf("%d",&p.a[p.i]);
+	}
+	
+	for(p.i=1;p.i<=p.n;p.i++){
+	printf("Enter the Priority for method %d : ",p.i);
+	scanf("%d",&p.pr[p.i]);
+	}
+}
