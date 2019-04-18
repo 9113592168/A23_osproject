@@ -71,3 +71,48 @@ A:	printf("Enter the method number you want to execute : ");
 		}
 	}
 }
+void timecut_off()
+{
+	p.cut_off=1;
+	int t=0;	
+	for(p.i=1;p.i<=p.n;p.i++)
+	{
+		p.rem_bt[p.i]=p.b[p.i];
+	}
+	while(1)
+	{
+		bool done=true;
+		for(p.i=1;p.i<=p.n;p.i++)
+		if(p.rem_bt[p.i]>0){
+			done = false;
+			if(p.rem_bt[p.i]>p.cut_off){
+				t+=p.cut_off;
+				p.rem_bt[p.i]-=p.cut_off;
+			}
+			else{
+				t=t+p.rem_bt[p.i];
+				p.wat[p.i]=t-p.b[p.i];
+				p.rem_bt[p.i]=0;
+			}
+		}
+	if(done==true)
+	break;
+	}
+}
+void turnaround()
+{
+	printf("\n\n\n__________________________________**********TURNAROUND TIME OF THE methodES__________________________________**********\n");
+	for(p.i=1;p.i<=p.n;p.i++){
+	p.tat[p.i]=p.wat[p.i]+p.b[p.i];
+	printf("\nmethod Number\t\tBurst Time\t\tArrival Time\t\tPriority\t\tTurnaround Time\n");
+	printf("    %d\t\t\t    %d\t\t\t     %d\t\t\t    %d\t\t\t     %d\n",p.i,p.b[p.i],p.a[p.i],p.pr[p.i],p.tat[p.i]);
+	}
+}
+void waiting(){
+	printf("\n\n\n__________________________________***********WAITING TIME OF THE methodES__________________________________**********\n");
+	for(p.i=1;p.i<=p.n;p.i++){
+		printf("\nmethod Number\t\tBurst Time\t\tArrival Time\t\tPriority\t\tWaiting Time\n");
+	    printf("    %d\t\t\t    %d\t\t\t     %d\t\t\t    %d\t\t\t     %d\n",p.i,p.b[p.i],p.a[p.i],p.pr[p.i],p.wat[p.i]);
+	}
+}
+
