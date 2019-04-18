@@ -115,4 +115,22 @@ void waiting(){
 	    printf("    %d\t\t\t    %d\t\t\t     %d\t\t\t    %d\t\t\t     %d\n",p.i,p.b[p.i],p.a[p.i],p.pr[p.i],p.wat[p.i]);
 	}
 }
+int main()
+{
+	float k=0,m=0;
+	getdata();
+	display();
+	priority();
+	timecut_off();
+	turnaround();
+	waiting();
+	for(p.i=1;p.i<=p.n;p.i++){
+	k=k+p.tat[p.i];
+	m=m+p.wat[p.i];
+	}
+	k=k/p.n;
+	m=m/p.n;
+	printf("Average turnaround time : %f",k);
+	printf("\nAverage waiting time : %f",m);
+}
 
