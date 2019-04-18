@@ -29,3 +29,45 @@ void getdata()
 	scanf("%d",&p.pr[p.i]);
 	}
 }
+void display()
+	{
+	printf("method Number\t\t\tBurst Time\t\t\tArrival Time\t\t\tPriority\n");
+	for(p.i=1;p.i<=p.n;p.i++){
+	printf("    %d\t\t\t\t    %d\t\t\t\t     %d\t\t\t\t    %d\n",p.i,p.b[p.i],p.a[p.i],p.pr[p.i]);
+	}
+}
+void priority(){
+	p.cnt=0;
+A:	printf("Enter the method number you want to execute : ");
+	scanf("%d",&p.i);
+	p.pr[p.i]==0;
+	if(p.pr[p.i]==0){
+	p.pr[p.i]+=1;
+	printf("%d is in Ready queue \n",p.i);
+	printf("\nmethod Number\t\t\tBurst Time\t\t\tArrival Time\t\t\tPriority\n");
+	printf("    %d\t\t\t\t    %d\t\t\t\t     %d\t\t\t\t    %d\n",p.i,p.b[p.i],p.a[p.i],p.pr[p.i]);
+	p.cnt++;
+	fflush(stdin);
+	printf("Do you want to execute more method? Y/N : ");
+	scanf("%c",&p.yess);
+	//if the user says yess the priority for that method will be changed to 1 and the old method will be preempted and moved to the waiting queue
+	if(p.yess=='Y'||p.yess=='y'){
+		printf("%d is preempted from the ready queue\n",p.i);
+		p.pr[p.i]=2;
+		goto A;
+	}
+	//and the priority of the newer method will be lesser than that of the priority of that method which was once preempted from the ready queue
+	//the method which has not executed yet in the ready queue will have same priority   
+	else{
+	printf("\n\n\nmethodes in the Waiting queue are \n\n");
+	for(p.i=1;p.i<=p.n;p.i++){
+	p.cnt=1;
+	if(p.pr[p.i]!=p.cnt){
+	p.pr[p.i]+=2;
+	printf("\nmethod Number\t\t\tBurst Time\t\t\tArrival Time\t\t\tPriority\n");
+	printf("    %d\t\t\t\t    %d\t\t\t\t     %d\t\t\t\t    %d\n",p.i,p.b[p.i],p.a[p.i],p.pr[p.i]);	
+				}
+			}
+		}
+	}
+}
